@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+<body>
+    <div class="containerC">
+        <form class="contenedor-detalles" action="Detalles_alumno2.html" method="post">
+            <div class="centrar">
+                <h1>Detalles del alumno</h1><br><br>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" value="Diego" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" value="Centeno"readonly>
+                </div>
+                <div class="form-group">
+                    <label for="expediente">Expediente:</label>
+                    <input type="text" id="expediente" name="expediente" value="292663"readonly>
+                </div>
+                <div class="form-group">
+                    <label for="carrera">Carrera:</label>
+                    <input type="text" id="carrera" name="carrera" value="Ingeniería de Software" readonly>
+                </div>
+            </div>           
+                
+
+            <table class="listaAlumnos">
+                <thead>
+                    <tr>
+                        <th>Certificado</th>
+                        <th>Fecha de inicio</th>
+                        <th>Fecha de término</th>
+                        <th>Descripción</th>
+                        <th>Skills</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Django</td>
+                        <td>Agosto 1 del 2022</td>
+                        <td>Diciembre 1 del 2022</td>
+                        <td>Framework para Backend</td>
+                        <td>Crear aplicaciones desde cero</td>
+                    </tr>
+                    <tr>
+                        <td>Scrum</td>
+                        <td>Agosto 1 del 2021</td>
+                        <td>Diciembre 1 del 2021</td>
+                        <td>Métodología de trabajo</td>
+                        <td>Liderazgo</td>
+                    </tr>
+                    <tr>
+                        <td>Aplicaciones Serverless</td>
+                        <td>Febrero 1 del 2022</td>
+                        <td>Junio 7 del 2022</td>
+                        <td>Aplicaciones sin necesidad de server</td>
+                        <td>Saber un poco de todo</td>
+                    </tr>
+
+                    </tr>
+                </tbody>
+                
+            </table>
+            <button type="button" class="boton" onclick="redireccionar('Lista_alumnos.html')">Regresar</button>
+
+        </form>
+    </div>
+
+    <script>
+        function redireccionar(url) {
+            window.location.href = url;
+        }
+    </script>
+    
+</body>
+</html>
