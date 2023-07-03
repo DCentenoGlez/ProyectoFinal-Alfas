@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="containerC">
-        <form class="login-form">
+        <form class="login-form" onsubmit="return validarFormulario()">
             <h1>Registro de Certificado</h1>
             <h3>Por favor, ingrese los siguientes datos:</h3><br>
             <div class="form-group">
@@ -66,6 +66,8 @@
             <div class="form-group">
                 <input type="reset" value="Borrar formulario" class="boton" onclick="borrarFormulario()">
             </div>
+            
+            <button type="button" class="boton" onclick="redireccionar('Menu_administrador.html')">Regresar</button>
         </form>
     </div>
 </body>
