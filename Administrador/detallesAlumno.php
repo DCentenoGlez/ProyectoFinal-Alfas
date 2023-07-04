@@ -5,8 +5,19 @@
 </head>
 <?php
         $id = $_POST['id'];
+
+        //Ver si existen los datos en POST
+            //SI:
+
         $nombreAdmin = $_POST['nombreAdmin'];
         $apellidosAdmin = $_POST['apellidosAdmin'];
+
+        // NO: (loggeo un alumno)
+            //Usar su ID para obtener su nombre y apellidos
+            //Guardarlos en nombreAdmin y apellidoAdmin
+
+
+
         $bd = new mysqli("localhost","root","","proyectofinalalfas");
         $querry="SELECT * FROM usuarios WHERE expediente = $id";
         $respuesta = mysqli_query($bd,$querry);
