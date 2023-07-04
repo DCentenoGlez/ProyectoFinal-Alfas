@@ -429,8 +429,7 @@ li {
     justify-content: space-around;
 }
 
-#botones{
-    display: flex;
-    align-items: center;
-    text-align: center;
+.botones{
+    display: grid;
+    justify-content: space-around;
 }
