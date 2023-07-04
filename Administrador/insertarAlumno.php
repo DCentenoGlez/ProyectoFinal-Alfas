@@ -50,6 +50,8 @@
 <?php 
 
 $idTemp = $_POST['id'];
+$nombreAdmin = $_POST['nombreAdmin'];
+$apellidosAdmin = $_POST['apellidosAdmin'];
 
 $expediente = $_POST['expediente'];
 $nombre = $_POST['nombre'];
@@ -76,6 +78,8 @@ if ($resultado->num_rows > 0) {
                 <h2>Error: El expediente ya existe en la base de datos.</h2>
                 <form action="registrarAlumno.php" method="POST">
                     <input type="hidden" name="id" value="<?php echo $idTemp; ?>">
+                    <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+                    <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
                     <input type="submit" value="Volver">
                 </form>
             </div>
@@ -97,6 +101,8 @@ if ($resultado->num_rows > 0) {
                     <h2>Se agregó un nuevo registro</h2>
                     <form action="registrarAlumno.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $idTemp; ?>">
+                        <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+                        <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
                         <input type="submit" value="Volver">
                     </form>
                 </div>
@@ -111,6 +117,8 @@ if ($resultado->num_rows > 0) {
                     <h2>Error al agregar el registro. Por favor, inténtelo de nuevo.</h2>
                     <form action="registrarAlumno.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $idTemp; ?>">
+                        <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+                        <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
                         <input type="submit" value="Volver">
                     </form>
                 </div>

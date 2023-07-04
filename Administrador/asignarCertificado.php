@@ -6,11 +6,22 @@
 </head>
 <?php
 $idTemp = $_POST['id'];
+$nombreAdmin = $_POST['nombreAdmin'];
+$apellidosAdmin = $_POST['apellidosAdmin'];
 ?>
 <body>
+    <header>
+        <div class="avatar">
+            <img src="https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png" alt="Avatar">
+            <span><?php echo $nombreAdmin." ".$apellidosAdmin; ?></span>
+            <button class="boton2" onclick="redirigirALogin()">Cerrar sesión</button>
+        </div>
+    </header>
     <div class="containerC">
         <form class="login-form" method="POST" action="insertarCertificado.php">
             <input type="hidden" name="id" value="<?php echo $idTemp; ?>">
+            <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+            <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
             <h1>Registro de Certificado</h1>
             <h3>Por favor, ingrese los siguientes datos:</h3><br>
             <div class="form-group">
@@ -78,5 +89,10 @@ $idTemp = $_POST['id'];
             </div>
         </form>
     </div>
+    <script>
+        function redirigirALogin() {
+            window.location.href = "../login/index.php";
+        }
+    </script>
 </body>
 </html>

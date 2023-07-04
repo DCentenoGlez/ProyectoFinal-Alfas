@@ -5,6 +5,8 @@
 </head>
 <?php
         $id = $_POST['id'];
+        $nombreAdmin = $_POST['nombreAdmin'];
+        $apellidosAdmin = $_POST['apellidosAdmin'];
         $bd = new mysqli("localhost","root","","proyectofinalalfas");
         $querry="SELECT * FROM usuarios WHERE expediente = $id";
         $respuesta = mysqli_query($bd,$querry);
@@ -19,6 +21,13 @@
     }
 </script>
 <body>
+    <header>
+        <div class="avatar">
+            <img src="https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png" alt="Avatar">
+            <span><?php echo $nombreAdmin." ".$apellidosAdmin; ?></span>
+            <button class="boton2" onclick="redirigirALogin()">Cerrar sesión</button>
+        </div>
+    </header>
     <div class="containerC">
         <div class="contenedor-detalles2">
         <form class="contenedor-detalles" action="Detalles_alumno2.html" method="post">
@@ -83,6 +92,8 @@
             <form class="formVolver" action="verListaAlumnos.php" method="POST">
                 <div class="form-group">
                     <input type="hidden" name="id" value="<?php echo $id ?>">
+                    <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+                    <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
                     <input type="submit" id="btnVolver" value="Volver">
                 </div>
             </form>
@@ -94,7 +105,9 @@
         function redireccionar(url) {
             window.location.href = url;
         }
+        function redirigirALogin() {
+            window.location.href = "../login/index.php";
+        }
     </script>
-    
 </body>
 </html>

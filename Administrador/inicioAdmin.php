@@ -12,8 +12,8 @@ $bd = new mysqli("localhost", "root", "", "proyectofinalalfas");
 $consulta = "SELECT nombre, apellidos FROM usuarios WHERE expediente = '$id'";
 $respuesta = mysqli_query($bd,$consulta);
 $fila = mysqli_fetch_array($respuesta);
-$nombre = $fila['nombre'];
-$apellidos = $fila['apellidos'];
+$nombreAdmin = $fila['nombre'];
+$apellidosAdmin = $fila['apellidos'];
 
 
 ?>
@@ -21,19 +21,21 @@ $apellidos = $fila['apellidos'];
     <header>
         <div class="avatar">
             <img src="https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png" alt="Avatar">
-            <span><?php echo $nombre." ".$apellidos; ?></span>
+            <span><?php echo $nombreAdmin." ".$apellidosAdmin; ?></span>
             <button class="boton2" onclick="redirigirALogin()">Cerrar sesión</button>
         </div>
     </header>
     <main class="container">
         <div class="login-form">
-            <h1>Bienvenido, <?php echo $nombre ?></h1>
+            <h1>Bienvenido, <?php echo $nombreAdmin ?></h1>
             <br><br><br>
             <h3>Elija la accion que desee realizar</h3>
             <div class="botones">
                 <div>
                     <form method="POST" action="asignarCertificado.php">
                         <input type="hidden" name="id" value="<?php echo $id ?>">
+                        <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+                        <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
                         <input class="boton" type="submit" value="Asignar Certificado">
                     </form>
                     <br>
@@ -41,6 +43,8 @@ $apellidos = $fila['apellidos'];
                 <div>
                     <form method="POST" action="registrarAlumno.php">
                         <input type="hidden" name="id" value="<?php echo $id ?>">
+                        <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+                        <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
                         <input class="boton" type="submit" value="Registrar Alumno">
                     </form>
                     <br>
@@ -48,6 +52,8 @@ $apellidos = $fila['apellidos'];
                 <div>
                     <form method="POST" action="verListaAlumnos.php">
                         <input type="hidden" name="id" value="<?php echo $id ?>">
+                        <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+                        <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
                         <input class="boton" type="submit" value="Lista de Alumnos">
                     </form>
                 </div>

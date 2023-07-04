@@ -7,11 +7,22 @@
 </head>
 <?php
 $idTemp = $_POST['id'];
+$nombreAdmin = $_POST['nombreAdmin'];
+$apellidosAdmin = $_POST['apellidosAdmin'];
 ?>
 <body>
+    <header>
+        <div class="avatar">
+            <img src="https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png" alt="Avatar">
+            <span><?php echo $nombreAdmin." ".$apellidosAdmin; ?></span>
+            <button class="boton2" onclick="redirigirALogin()">Cerrar sesión</button>
+        </div>
+    </header>
     <div class="container">
         <form class="login-form" method="POST" action="insertarAlumno.php">
             <input type="hidden" name="id" value="<?php echo $idTemp; ?>">
+            <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+            <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
             <h1>Registro de Alumno</h1>
             <h3>Ingrese los datos del alumno</h3>
             <div class="form-group">
@@ -53,10 +64,16 @@ $idTemp = $_POST['id'];
         <form class="formVolver" action="inicioAdmin.php" method="POST">
             <div class="form-group">
                 <input type="hidden" name="id" value="<?php echo $idTemp; ?>">
+                <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+                <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
                 <input type="submit" id="btnVolver" value="Volver">
             </div>
         </form>
     </div>
-
+    <script>
+        function redirigirALogin() {
+            window.location.href = "../login/index.php";
+        }
+    </script>
 </body>
 </html>
