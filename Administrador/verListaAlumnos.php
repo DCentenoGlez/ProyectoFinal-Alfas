@@ -45,8 +45,10 @@
                         <td><?php echo $datos['apellidos']?> </td>
                         <td><?php echo $datos['carrera']?> </td>
                         <td>
-                            <form method="POST" action="detallesAlumno.php"> 
-                                <input type="hidden" name="id" value="<?php echo $datos['expediente']; ?>">
+                            <form method="POST" action="detallesAlumno.php">
+                                 
+                                <input type="hidden" name="id" value="<?php echo $idTemp; ?>">
+                                <input type="hidden" name="idAlumno" value="<?php echo $datos['expediente']; ?>">
                                 <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
                                 <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
                                 <input class="boton" type="submit" value="Detalles">

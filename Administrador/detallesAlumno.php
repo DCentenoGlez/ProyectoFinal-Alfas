@@ -4,13 +4,23 @@
     <link rel="stylesheet" type="text/css" href="../estilo.css">
 </head>
 <?php
-        $id = $_POST['id'];
+        $id = $_POST['idAlumno'];
+        $bd = new mysqli("localhost","root","","proyectofinalalfas");
+        $querry="SELECT * FROM usuarios WHERE expediente = $id";
+        $respuesta = mysqli_query($bd,$querry);
+        $datos = mysqli_fetch_array($respuesta);
 
         //Ver si existen los datos en POST
             //SI:
+        if (!empty($_POST['nombreAdmin']) && !empty($_POST['apellidosAdmin']) && !empty($_POST['id'])) {
+            $idTemp = $_POST['id']; // id del administrador
+            $nombreAdmin = $_POST['nombreAdmin'];
+            $apellidosAdmin = $_POST['apellidosAdmin'];
 
-        $nombreAdmin = $_POST['nombreAdmin'];
-        $apellidosAdmin = $_POST['apellidosAdmin'];
+        } else {  
+            $nombreAdmin = $datos['nombre'];
+            $apellidosAdmin = $datos['apellidos'];
+        }
 
         // NO: (loggeo un alumno)
             //Usar su ID para obtener su nombre y apellidos
@@ -18,17 +28,22 @@
 
 
 
-        $bd = new mysqli("localhost","root","","proyectofinalalfas");
-        $querry="SELECT * FROM usuarios WHERE expediente = $id";
-        $respuesta = mysqli_query($bd,$querry);
-        $datos = mysqli_fetch_array($respuesta);
 
-        //$querry2="SELECT * FROM certificados WHERE idAlumno = $id";
-        //$respuesta2 = mysqli_query($bd,$querry2);
+        $querry2="SELECT * FROM certificados WHERE idAlumno = $id";
+        $respuesta2 = mysqli_query($bd,$querry2);
 ?>
 <script>
-    if(<?php echo $datos['rol']?> == "Alumno"){
+    if("<?php echo $datos['rol']; ?>" === "Alumno") {
+        var boton = document.getElementById("btnVolver");
+        boton.style.display = "none"; 
         
+        var botonEditar = document.getElementById("btnEditar");
+        botonEditar.style.display = "none"; 
+
+        var entradas = document.getElementsByClassName("btnAdmin");
+        for (var i = 0; i < entradas.length; i++) {
+            entradas[i].disabled = true;
+        }
     }
 </script>
 <body>
@@ -46,20 +61,21 @@
                 <h1>Detalles del alumno</h1><br><br>
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" value="<?php echo $datos['nombre']?>" readonly>
+                    <input class="btnAdmin" type="text" id="nombre" name="nombre" value="<?php echo $datos['nombre']?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="apellidos">Apellidos:</label>
-                    <input type="text" id="apellidos" name="apellidos" value="<?php echo $datos['apellidos']?>"readonly>
+                    <input class="btnAdmin" type="text" id="apellidos" name="apellidos" value="<?php echo $datos['apellidos']?>"readonly>
                 </div>
                 <div class="form-group">
                     <label for="expediente">Expediente:</label>
-                    <input type="text" id="expediente" name="expediente" value="<?php echo $datos['expediente']?>"readonly>
+                    <input class="btnAdmin" type="text" id="expediente" name="expediente" value="<?php echo $datos['expediente']?>"readonly>
                 </div>
                 <div class="form-group">
                     <label for="carrera">Carrera:</label>
-                    <input type="text" id="carrera" name="carrera" value="<?php echo $datos['carrera']?>" readonly>
+                    <input class="btnAdmin" type="text" id="carrera" name="carrera" value="<?php echo $datos['carrera']?>" readonly>
                 </div>
+              <input class="btnEditar" id="btnEditar" type="submit" value="Editar">
             </div>           
             <table class="listaAlumnos">
                 <thead>
@@ -67,50 +83,35 @@
                         <th>Certificado</th>
                         <th>Fecha de inicio</th>
                         <th>Fecha de término</th>
-                        <th>Descripción</th>
-                        <th>Skills</th>
+                        <th>Habilidades</th>
+                
                     </tr>
                 </thead>
+                <?php while($datos2 = mysqli_fetch_array($respuesta2)){ ?>
                 <tbody>
                     <tr>
-                        <td>Django</td>
-                        <td>Agosto 1 del 2022</td>
-                        <td>Diciembre 1 del 2022</td>
-                        <td>Framework para Backend</td>
-                        <td>Crear aplicaciones desde cero</td>
-                    </tr>
-                    <tr>
-                        <td>Scrum</td>
-                        <td>Agosto 1 del 2021</td>
-                        <td>Diciembre 1 del 2021</td>
-                        <td>Métodología de trabajo</td>
-                        <td>Liderazgo</td>
-                    </tr>
-                    <tr>
-                        <td>Aplicaciones Serverless</td>
-                        <td>Febrero 1 del 2022</td>
-                        <td>Junio 7 del 2022</td>
-                        <td>Aplicaciones sin necesidad de server</td>
-                        <td>Saber un poco de todo</td>
-                    </tr>
-
+                        <td><?php echo $datos2['nombre']?></td>
+                        <td><?php echo $datos2['fechaInicio']?></td>
+                        <td><?php echo $datos2['fechaFin']?></td>
+                        <td><?php echo $datos2['habilidades']?></td>
+                       
                     </tr>
                 </tbody>
-                
+                <?php } ?>
             </table>
         </form>
-        <div id="CentrarBoton">
-            <form class="formVolver" action="verListaAlumnos.php" method="POST">
-                <div class="form-group">
-                    <input type="hidden" name="id" value="<?php echo $id ?>">
-                    <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
-                    <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
-                    <input type="submit" id="btnVolver" value="Volver">
-                </div>
-            </form>
-        </div>
-        </div>
     </div>
+</div>
+<div id="CentrarBoton">
+    <form class="formVolver" action="verListaAlumnos.php" method="POST">
+        <div class="form-group">
+            <input type="hidden" name="id" value="<?php echo $idTemp ?>">
+            <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+            <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
+            <input type="submit" id="btnVolver" value="Volver">
+        </div>
+    </form>
+</div>
 
     <script>
         function redireccionar(url) {

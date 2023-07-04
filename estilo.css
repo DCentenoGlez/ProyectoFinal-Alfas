@@ -424,6 +424,21 @@ li {
     background-color: #c23616;
 }
 
+#btnEditar {
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: lightpink;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#btnEditar:hover {
+    background-color: pink;
+}
+
 #CentrarBoton{
     display: grid;
     justify-content: space-around;
