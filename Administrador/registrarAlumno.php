@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../estilo.css">
     <script src="script.js"></script>
+    <title>Registrar alumno</title>
 </head>
 <?php
 $idTemp = $_POST['id'];
@@ -35,6 +36,10 @@ $idTemp = $_POST['id'];
                     <option value="opcion5">Ingeniería en Telecomunicaciones y Redes</option>
                 </select>
             </div><br>
+            <div class="form-group">
+                <label for="contrasena">Contraseña:</label>
+                <input type="text" id="contrasena" name="contrasena" required>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Registrar" class="boton" onclick="enviarFormulario2(event)">
             </div>
