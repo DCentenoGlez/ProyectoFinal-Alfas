@@ -433,3 +433,13 @@ li {
     display: grid;
     justify-content: space-around;
 }
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.contenedor-detalles2  {
+    display: flex;
+}
