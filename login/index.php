@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <link rel="stylesheet" type="text/css" href="../estilo.css">
 </head>
 <body>
     <div class="container">
@@ -20,20 +20,6 @@
                 <input type="submit" value="Iniciar sesión">
             </div>
         </form>
-        <div class="caja" id="caja">
-        <form method="POST" action="validarContra.php">
-            <h3>Correo:</h3><input type="text" name="email" id = "email" >
-            <h3>Contraseña:</h3><input type="password" name="pass" id = "pass" >
-            
-            <br>
-            <br>
-            <br>
-            <input type="submit" value = "Iniciar Sesión" class="boton"/>
-        </form>
-        
-    <form method="POST" action="recuperar.php">
-        <input type="submit" value="Recuperar mi contraseña">
-    </form>
     </div>
 </body>
 </html>
