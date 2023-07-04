@@ -29,11 +29,11 @@ $idTemp = $_POST['id'];
             <div class="form-group">
                 <label for="materia">Carrera:</label>
                 <select id="materia" name="materia" class="lista-desplegable" >
-                    <option value="opcion1">Licenciatura en Informática</option>
-                    <option value="opcion2">Licenciatura en Administración de las T.I.</option>
-                    <option value="opcion3">Ingeniería de Software</option>
-                    <option value="opcion4">Ingeniería en Computación</option>
-                    <option value="opcion5">Ingeniería en Telecomunicaciones y Redes</option>
+                    <option value="Licenciatura en Informática">Licenciatura en Informática</option>
+                    <option value="Licenciatura en Administración de las T.I.">Licenciatura en Administración de las T.I.</option>
+                    <option value="Ingeniería de Software">Ingeniería de Software</option>
+                    <option value="Ingeniería en Computación">Ingeniería en Computación</option>
+                    <option value="Ingeniería en Telecomunicaciones y Redes">Ingeniería en Telecomunicaciones y Redes</option>
                 </select>
             </div><br>
             <div class="form-group">
