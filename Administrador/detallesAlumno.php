@@ -61,9 +61,17 @@
     </header>
     <div class="containerC">
         <div class="contenedor-detalles2">
-        <form class="contenedor-detalles" action="Detalles_alumno2.html" method="post">
+        <form class="contenedor-detalles" action="editarAlumno.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $idTemp ?>">
+            <input type="hidden" name="nombreAdmin" value="<?php echo $nombreAdmin ?>">
+            <input type="hidden" name="apellidosAdmin" value="<?php echo $apellidosAdmin ?>">
+                    
             <div class="centrar">
                 <h1>Detalles del alumno</h1><br><br>
+                <div class="form-group">
+                    <label for="expediente">Expediente:</label>
+                    <input class="btnAdmin" type="text" id="expediente" name="expediente" value="<?php echo $datos['expediente']?>" readonly>
+                </div>
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
                     <input class="btnAdmin" type="text" id="nombre" name="nombre" value="<?php echo $datos['nombre']?>">
@@ -73,12 +81,12 @@
                     <input class="btnAdmin" type="text" id="apellidos" name="apellidos" value="<?php echo $datos['apellidos']?>">
                 </div>
                 <div class="form-group">
-                    <label for="expediente">Expediente:</label>
-                    <input class="btnAdmin" type="text" id="expediente" name="expediente" value="<?php echo $datos['expediente']?>">
-                </div>
-                <div class="form-group">
                     <label for="carrera">Carrera:</label>
                     <input class="btnAdmin" type="text" id="carrera" name="carrera" value="<?php echo $datos['carrera']?>" >
+                </div>
+                <div class="form-group">
+                    <label for="carrera">Contraseña:</label>
+                    <input class="btnAdmin" type="text" id="contrasena" name="contrasena" value="<?php echo $datos['contrasena']?>" >
                 </div>
               <input class="btnEditar" id="btnEditar" type="submit" value="Editar">
             </div>           
