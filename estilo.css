@@ -428,3 +428,9 @@ li {
     display: grid;
     justify-content: space-around;
 }
+
+#botones{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
