@@ -33,6 +33,7 @@
             if (email === "alumno@gmail.com" && password === "alumno") {
                 // Iniciar sesión exitosamente
                 localStorage.setItem("isLoggedIn", true);
+                localStorage.setItem("sesionIniciada", true);
                 window.location.href = "Menu_administrador.html"; // Redireccionar al MENU
             } else {
                 // Credenciales inválidas, mostrar mensaje de error
