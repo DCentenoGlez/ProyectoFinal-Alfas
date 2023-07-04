@@ -23,7 +23,7 @@ else{
     echo "hay un error";
 }
 
-$query = "SELECT expediente,rol FROM usuarios WHERE contrasena = '$var3' AND correo = '$var4'";
+$query = "SELECT expediente,rol FROM usuarios WHERE contrasena = '$var3' AND expediente = '$var4'";
 
 
 
