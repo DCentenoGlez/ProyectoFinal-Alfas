@@ -49,8 +49,8 @@ if (($resultado && mysqli_num_rows($resultado))> 0){
     }
     elseif($rol=='Alumno'){
         ?>
-            <form id="redirectForm3" action="../Alumno/inicioAlumno.php" method="POST">
-                <input type="hidden" name="id" value=<?php echo $expediente ?>>
+            <form id="redirectForm3" action="../Administrador/detallesAlumno.php" method="POST">
+                <input type="hidden" name="idAlumno" value=<?php echo $expediente ?>>
             </form>
             <script type="text/javascript">
                 document.getElementById("redirectForm3").submit();
