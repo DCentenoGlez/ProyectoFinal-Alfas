@@ -13,7 +13,7 @@ $var2 = "";
 $var3 = $_POST['pass'];
 $var4 = $_POST['email'];
 
-$bd = new mysqli("localhost", "root", "", "inmobiliaria");
+$bd = new mysqli("localhost", "root", "", "proyectofinalalfas");
 
 if ($bd){
     echo "se establece conexion";
@@ -23,46 +23,34 @@ else{
     echo "hay un error";
 }
 
-$query = "SELECT IdEmpleados,Rol FROM empleados WHERE contraseña = '$var3' AND Correo = '$var4'";
-//$query2 = "SELECT Correo FROM empleados WHERE Correo = '$var4'";
+$query = "SELECT expediente,rol FROM usuarios WHERE contrasena = '$var3' AND correo = '$var4'";
+
 
 
 //se guarda el resultado de la consulta
-//$resultado2 = mysqli_query($bd, $query2);
 $resultado = mysqli_query($bd, $query);
 $cons = ($resultado && mysqli_num_rows($resultado));
-//$cons2 = ($resultado2 && mysqli_num_rows($resultado2));
 
 //se analiza el resultado y si es que esta devolvio algun resultado
 if (($resultado && mysqli_num_rows($resultado))> 0){
     $row = mysqli_fetch_assoc($resultado);
-    $idEmpleado = $row['IdEmpleados'];
-    $rol = $row['Rol'];
+    $expediente = $row['expediente'];
+    $rol = $row['rol'];
 
-    if($rol=='Agente de finanzas'){
+    if($rol=='Administrador'){
     ?>
-        <form id="redirectForm1" action="../agenteFinanzas/gestionComision.php" method="post">
-            <input type="hidden" name="id" value=<?php echo $idEmpleado ?>>
+        <form id="redirectForm1" action="../Administrador/inicioAdmin.php" method="POST">
+            <input type="hidden" name="id" value=<?php echo $expediente ?>>
         </form>
         <script type="text/javascript">
             document.getElementById("redirectForm1").submit();
         </script>
     <?php
     }
-    elseif($rol=='Agente de ventas'){
+    elseif($rol=='Alumno'){
         ?>
-            <form id="redirectForm2" action="../agenteVentas/inicioVentas.php" method="post">
-                <input type="hidden" name="id" value=<?php echo $idEmpleado ?>>
-            </form>
-            <script type="text/javascript">
-                document.getElementById("redirectForm2").submit();
-            </script>
-        <?php
-        }
-    elseif($rol=='Gerente de ventas'){
-        ?>
-            <form id="redirectForm3" action="../gerenteVentas/menuGerenteVentas.php" method="post">
-                <input type="hidden" name="id" value=<?php echo $idEmpleado ?>>
+            <form id="redirectForm3" action="../Alumno/inicioAlumno.php" method="POST">
+                <input type="hidden" name="id" value=<?php echo $expediente ?>>
             </form>
             <script type="text/javascript">
                 document.getElementById("redirectForm3").submit();
