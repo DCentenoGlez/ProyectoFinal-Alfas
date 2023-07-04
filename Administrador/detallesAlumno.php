@@ -16,37 +16,42 @@
             $idTemp = $_POST['id']; // id del administrador
             $nombreAdmin = $_POST['nombreAdmin'];
             $apellidosAdmin = $_POST['apellidosAdmin'];
+            $condicional = 1;
 
         } else {  
             $nombreAdmin = $datos['nombre'];
             $apellidosAdmin = $datos['apellidos'];
+            $condicional = 0;
         }
 
         // NO: (loggeo un alumno)
             //Usar su ID para obtener su nombre y apellidos
             //Guardarlos en nombreAdmin y apellidoAdmin
 
-
-
-
         $querry2="SELECT * FROM certificados WHERE idAlumno = $id";
         $respuesta2 = mysqli_query($bd,$querry2);
 ?>
 <script>
-    if("<?php echo $datos['rol']; ?>" === "Alumno") {
-        var boton = document.getElementById("btnVolver");
-        boton.style.display = "none"; 
-        
-        var botonEditar = document.getElementById("btnEditar");
-        botonEditar.style.display = "none"; 
 
-        var entradas = document.getElementsByClassName("btnAdmin");
-        for (var i = 0; i < entradas.length; i++) {
-            entradas[i].disabled = true;
+    function ocultarAlumnos(){
+        if(<?php echo $condicional?> === 0) {
+            var boton = document.getElementById("btnVolver");
+            boton.style.display = "none"; 
+            
+            var botonEditar = document.getElementById("btnEditar");
+            botonEditar.style.display = "none"; 
+            
+            var entradas = document.getElementsByClassName("btnAdmin");
+            for (var i = 0; i < entradas.length; i++) {
+                entradas[i].disabled = true;
+            }
         }
+
+        document.body.style.display = "block";
     }
+
 </script>
-<body>
+<body style="display: none;" onload="ocultarAlumnos()">
     <header>
         <div class="avatar">
             <img src="https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png" alt="Avatar">
@@ -61,19 +66,19 @@
                 <h1>Detalles del alumno</h1><br><br>
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
-                    <input class="btnAdmin" type="text" id="nombre" name="nombre" value="<?php echo $datos['nombre']?>" readonly>
+                    <input class="btnAdmin" type="text" id="nombre" name="nombre" value="<?php echo $datos['nombre']?>">
                 </div>
                 <div class="form-group">
                     <label for="apellidos">Apellidos:</label>
-                    <input class="btnAdmin" type="text" id="apellidos" name="apellidos" value="<?php echo $datos['apellidos']?>"readonly>
+                    <input class="btnAdmin" type="text" id="apellidos" name="apellidos" value="<?php echo $datos['apellidos']?>">
                 </div>
                 <div class="form-group">
                     <label for="expediente">Expediente:</label>
-                    <input class="btnAdmin" type="text" id="expediente" name="expediente" value="<?php echo $datos['expediente']?>"readonly>
+                    <input class="btnAdmin" type="text" id="expediente" name="expediente" value="<?php echo $datos['expediente']?>">
                 </div>
                 <div class="form-group">
                     <label for="carrera">Carrera:</label>
-                    <input class="btnAdmin" type="text" id="carrera" name="carrera" value="<?php echo $datos['carrera']?>" readonly>
+                    <input class="btnAdmin" type="text" id="carrera" name="carrera" value="<?php echo $datos['carrera']?>" >
                 </div>
               <input class="btnEditar" id="btnEditar" type="submit" value="Editar">
             </div>           
