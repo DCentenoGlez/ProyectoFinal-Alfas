@@ -6,18 +6,28 @@
 </head>
 <?php
 $id = $_POST['id'];
+
+$bd = new mysqli("localhost", "root", "", "proyectofinalalfas");
+
+$consulta = "SELECT nombre, apellidos FROM usuarios WHERE expediente = '$id'";
+$respuesta = mysqli_query($bd,$consulta);
+$fila = mysqli_fetch_array($respuesta);
+$nombre = $fila['nombre'];
+$apellidos = $fila['apellidos'];
+
+
 ?>
 <body>
     <header>
         <div class="avatar">
             <img src="https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png" alt="Avatar">
-            <span>Nombre de Usuario</span>
+            <span><?php echo $nombre." ".$apellidos; ?></span>
             <button class="boton2" onclick="redirigirALogin()">Cerrar sesión</button>
         </div>
     </header>
     <main class="container">
         <div class="login-form">
-            <h1>Bienvenido, Administrador</h1>
+            <h1>Bienvenido, <?php echo $nombre ?></h1>
             <br><br><br>
             <h3>Elija la accion que desee realizar</h3>
             <div class="botones">
