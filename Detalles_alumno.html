@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="estilo.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="containerC">
@@ -21,11 +22,22 @@
                     <input type="text" id="expediente" name="expediente" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="carrera">Carrera:</label>
-                    <input type="text" id="carrera" name="carrera" readonly>
+                    <label for="materia">Carrera:</label>
+                    <select id="materia" name="materia" class="lista-desplegable-edit" disabled >
+                        <option value="opcion1"> </option>
+                        <option value="opcion2">Licenciatura en Informática</option>
+                        <option value="opcion3">Licenciatura en Administración de las T.I.</option>
+                        <option value="opcion4">Ingeniería de Software</option>
+                        <option value="opcion5">Ingeniería en Computación</option>
+                        <option value="opcion6">Ingeniería en Telecomunicaciones y Redes</option>
+                    </select>
+                </div><br>
+                <div class="form-group">
+                    <button type="button" class="boton" onclick="editarCampos()">Editar</button>
+                    <button type="button" class="boton" onclick="guardarCambios()">Guardar</button>
+                    <button type="button" class="boton" onclick="cancelarEdicion()">Cancelar</button>
                 </div>
             </div>
-                
 
             <table class="listaAlumnos">
                 <thead>
@@ -39,40 +51,64 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Nombre de ejemplo</td>
-                        <td>Fecha de ejemplo</td>
-                        <td>Fecha de ejemplo</td>
-                        <td>Descripción de ejemplo</td>
-                        <td>Skills de ejemplo</td>
+                        <td id="certificado1" class="editable" onclick="editarCampoTabla('certificado1')">Nombre de ejemplo</td>
+                        <td id="inicio1" class="editable" onclick="editarCampoTabla('inicio1')">Fecha de ejemplo</td>
+                        <td id="termino1" class="editable" onclick="editarCampoTabla('termino1')">Fecha de ejemplo</td>
+                        <td id="descripcion1" class="editable" onclick="editarCampoTabla('descripcion1')">Descripción de ejemplo</td>
+                        <td id="skills1" class="editable" onclick="editarCampoTabla('skills1')">Skills de ejemplo</td>
                     </tr>
                     <tr>
-                        <td>Nombre de ejemplo</td>
-                        <td>Fecha de ejemplo</td>
-                        <td>Fecha de ejemplo</td>
-                        <td>Descripción de ejemplo</td>
-                        <td>Skills de ejemplo</td>
+                        <td id="certificado2" class="editable" onclick="editarCampoTabla('certificado2')">Nombre de ejemplo</td>
+                        <td id="inicio2" class="editable" onclick="editarCampoTabla('inicio2')">Fecha de ejemplo</td>
+                        <td id="termino2" class="editable" onclick="editarCampoTabla('termino2')">Fecha de ejemplo</td>
+                        <td id="descripcion2" class="editable" onclick="editarCampoTabla('descripcion2')">Descripción de ejemplo</td>
+                        <td id="skills2" class="editable" onclick="editarCampoTabla('skills2')">Skills de ejemplo</td>
                     </tr>
                     <tr>
-                        <td>Nombre de ejemplo</td>
-                        <td>Fecha de ejemplo</td>
-                        <td>Fecha de ejemplo</td>
-                        <td>Descripción de ejemplo</td>
-                        <td>Skills de ejemplo</td>
+                        <td id="certificado3" class="editable" onclick="editarCampoTabla('certificado3')">Nombre de ejemplo</td>
+                        <td id="inicio3" class="editable" onclick="editarCampoTabla('inicio3')">Fecha de ejemplo</td>
+                        <td id="termino3" class="editable" onclick="editarCampoTabla('termino3')">Fecha de ejemplo</td>
+                        <td id="descripcion3" class="editable" onclick="editarCampoTabla('descripcion3')">Descripción de ejemplo</td>
+                        <td id="skills3" class="editable" onclick="editarCampoTabla('skills3')">Skills de ejemplo</td>
                     </tr>
                     <tr>
-                        <td>Nombre de ejemplo</td>
-                        <td>Fecha de ejemplo</td>
-                        <td>Fecha de ejemplo</td>
-                        <td>Descripción de ejemplo</td>
-                        <td>Skills de ejemplo</td>
+                        <td id="certificado4" class="editable" onclick="editarCampoTabla('certificado4')">Nombre de ejemplo</td>
+                        <td id="inicio4" class="editable" onclick="editarCampoTabla('inicio4')">Fecha de ejemplo</td>
+                        <td id="termino4" class="editable" onclick="editarCampoTabla('termino4')">Fecha de ejemplo</td>
+                        <td id="descripcion4" class="editable" onclick="editarCampoTabla('descripcion4')">Descripción de ejemplo</td>
+                        <td id="skills4" class="editable" onclick="editarCampoTabla('skills4')">Skills de ejemplo</td>
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="boton" onclick="redireccionar('Lista_alumnos.html')">Regresar</button>
+            <button id="boton-regresar" type="button" class="boton" onclick="redireccionar('Lista_alumnos.html')">Regresar</button>
         </form>
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Verificar si la sesión está iniciada
+          var sesionIniciada = localStorage.getItem("sesionIniciada");
+
+          // Obtener el botón de regresar
+          var botonRegresar = document.getElementById("boton-regresar");
+
+          if (sesionIniciada) {
+            // Si hay sesión iniciada, se muestran los botones de editar, guardar y cancelar
+            var botones = document.getElementsByClassName("boton");
+            for (var i = 0; i < botones.length; i++) {
+              botones[i].style.display = "block";
+            }
+          } else {
+            // Si no hay sesión iniciada, se ocultan los botones de editar, guardar y cancelar
+            var botones = document.getElementsByClassName("boton");
+            for (var i = 0; i < botones.length; i++) {
+              botones[i].style.display = "none";
+            }
+          }
+
+          // Mostrar siempre el botón de regresar
+          botonRegresar.style.display = "block";
+        });
         function redireccionar(url) {
             window.location.href = url;
         }
