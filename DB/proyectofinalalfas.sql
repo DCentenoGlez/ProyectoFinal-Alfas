@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-07-2023 a las 18:42:24
+-- Tiempo de generación: 05-07-2023 a las 01:17:13
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -36,6 +36,15 @@ CREATE TABLE `certificados` (
   `idAlumno` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `certificados`
+--
+
+INSERT INTO `certificados` (`idCertificado`, `nombre`, `fechaInicio`, `fechaFin`, `habilidades`, `idAlumno`) VALUES
+(6, 'HTML básico', '2023-07-04', '2023-07-25', 'Desarrollo web, Diseño gráfico', 307066),
+(7, 'SQL intermedio', '2023-06-07', '2023-06-28', 'Bases de datos, Análisis de datos', 307066),
+(8, 'Gestion de redes para emprendedores', '2023-07-14', '2023-07-21', 'Gestión de proyectos, Marketing digital', 307066);
+
 -- --------------------------------------------------------
 
 --
@@ -57,7 +66,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`expediente`, `nombre`, `apellidos`, `contrasena`, `rol`, `carrera`) VALUES
 (307011, 'Erick', 'Díaz Villegas', 'hola123', 'Administrador', NULL),
-(307077, 'Carlos Zahid', 'Hernandez Garcia', '123hola', 'Administrador', NULL);
+(307066, 'Mauricio', 'Arredondo Moreno', 'prueba123', 'Alumno', 'Ingeniería de Software'),
+(307077, 'Carlos Zahid', 'Hernandez Garcia', '123hola', 'Administrador', NULL),
+(666666, 'Cristian Julián', 'Melgar Zarrabal', 'prueba123', 'Alumno', 'Licenciatura en Informática');
 
 --
 -- Índices para tablas volcadas
@@ -84,7 +95,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `certificados`
 --
 ALTER TABLE `certificados`
-  MODIFY `idCertificado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCertificado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
