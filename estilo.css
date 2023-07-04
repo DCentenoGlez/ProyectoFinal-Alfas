@@ -116,6 +116,14 @@
     background-color: #ad0000;
 }
 
+.formVolver{
+    align-items: center;
+}
+
+.formVolver input{
+    background-color: red;
+}
+
 /*-----------------------------------------*/
 
 body {
@@ -395,4 +403,28 @@ li {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+/* 
+
+*/
+
+#btnVolver {
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#btnVolver:hover {
+    background-color: #c23616;
+}
+
+#CentrarBoton{
+    display: grid;
+    justify-content: space-around;
 }
